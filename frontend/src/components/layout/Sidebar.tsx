@@ -9,7 +9,11 @@ const navItems = [
   { to: "/income-outcome", label: "Income & Outcome", icon: Scale }
 ];
 
-export const Sidebar = () => (
+interface SidebarProps {
+  onNavigate?: () => void;
+}
+
+export const Sidebar = ({ onNavigate }: SidebarProps) => (
   <aside className="flex h-full min-h-screen w-full flex-col border-r border-slate-200 bg-white p-4 md:w-64 dark:border-slate-800 dark:bg-slate-950">
     <div className="mb-8 rounded-xl p-3 text-lg font-semibold text-white" style={{ backgroundColor: "var(--color-primary)" }}>
       ExpenseFlow
@@ -20,6 +24,7 @@ export const Sidebar = () => (
         <NavLink
           key={to}
           to={to}
+          onClick={onNavigate}
           className={({ isActive }) =>
             cn(
               "flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition",
@@ -38,6 +43,7 @@ export const Sidebar = () => (
     <div className="mt-auto border-t border-slate-200 pt-4 dark:border-slate-800">
       <NavLink
         to="/profile"
+        onClick={onNavigate}
         className={({ isActive }) =>
           cn(
             "flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition",

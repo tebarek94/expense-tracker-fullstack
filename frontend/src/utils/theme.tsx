@@ -78,17 +78,14 @@ const applyTheme = (settings: ThemeSettings) => {
 };
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
-  const [settings, setSettings] = useState<ThemeSettings>(defaultTheme);
+  const [settings, setSettings] = useState<ThemeSettings>(() => parseTheme());
 
   useEffect(() => {
-    const initial = parseTheme();
-    setSettings(initial);
-    applyTheme(initial);
-  }, []);
+    applyTheme(settings);
+  }, [settings]);
 
   useEffect(() => {
     localStorage.setItem(THEME_KEY, JSON.stringify(settings));
-    applyTheme(settings);
   }, [settings]);
 
   const value = useMemo<ThemeContextValue>(

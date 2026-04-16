@@ -11,19 +11,23 @@ export const TopNavbar = () => {
   return (
     <header className="space-y-4 border-b border-slate-200 bg-white px-4 py-3 dark:border-slate-800 dark:bg-slate-950">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           <p className="text-xs text-slate-500 dark:text-slate-400">Welcome back</p>
-          <h1 className="text-xl font-semibold text-slate-900 dark:text-slate-100">
+          <h1 className="truncate text-xl font-semibold text-slate-900 dark:text-slate-100">
             {user?.name ?? "Expense Tracker"}
           </h1>
         </div>
 
-        <div className="flex items-center gap-2">
-          <Button variant="secondary" onClick={() => setShowCustomizer((prev) => !prev)}>
+        <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
+          <Button
+            variant="secondary"
+            className="w-full sm:w-auto"
+            onClick={() => setShowCustomizer((prev) => !prev)}
+          >
             <Palette size={16} className="mr-2" />
             Theme
           </Button>
-          <Button variant="danger" onClick={logout}>
+          <Button variant="danger" className="w-full sm:w-auto" onClick={logout}>
             <LogOut size={16} className="mr-2" />
             Logout
           </Button>

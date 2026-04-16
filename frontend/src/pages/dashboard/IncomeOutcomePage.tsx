@@ -170,10 +170,10 @@ export const IncomeOutcomePage = () => {
               {incomeEntries.map((entry) => (
                 <div
                   key={entry.id}
-                  className="flex items-center justify-between rounded-xl border border-slate-200 p-3 dark:border-slate-700"
+                  className="flex items-start justify-between gap-2 rounded-xl border border-slate-200 p-3 dark:border-slate-700"
                 >
-                  <div>
-                    <p className="font-medium text-slate-900 dark:text-slate-100">{entry.title}</p>
+                  <div className="min-w-0">
+                    <p className="truncate font-medium text-slate-900 dark:text-slate-100">{entry.title}</p>
                     <p className="text-xs text-slate-500 dark:text-slate-400">
                       {formatDate(entry.date)}
                     </p>
@@ -204,10 +204,10 @@ export const IncomeOutcomePage = () => {
             {recentExpenses.map((expense) => (
               <div
                 key={expense.id}
-                className="flex items-center justify-between rounded-xl border border-slate-200 p-3 dark:border-slate-700"
+                className="flex items-start justify-between gap-2 rounded-xl border border-slate-200 p-3 dark:border-slate-700"
               >
-                <div>
-                  <p className="font-medium text-slate-900 dark:text-slate-100">{expense.title}</p>
+                <div className="min-w-0">
+                  <p className="truncate font-medium text-slate-900 dark:text-slate-100">{expense.title}</p>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
                     {expense.category} - {formatDate(expense.date)}
                   </p>
